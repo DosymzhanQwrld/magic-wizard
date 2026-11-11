@@ -63,6 +63,11 @@ public class PlayerHealth : MonoBehaviour
         sr.enabled = true;
     }
 
+    public void Kill()
+    {
+        Die();
+    }
+
     void Die()
     {
         if (IsDead) return;

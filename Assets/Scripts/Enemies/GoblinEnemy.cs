@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(EnemyVision))]
-public class SlimeEnemy : MonoBehaviour
+public class GoblinEnemy : MonoBehaviour
 {
     enum State { Patrol, Chase, WindUp, Lunge, Cooldown }
 

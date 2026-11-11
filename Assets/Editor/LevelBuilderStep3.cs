@@ -4,20 +4,20 @@ using UnityEngine;
 
 public static class LevelBuilderStep3
 {
-    [MenuItem("Magic Wizard/Step 3 - Slime Enemy")]
+    [MenuItem("Magic Wizard/Step 3 - Goblin Enemy")]
     public static void Step3()
     {
         if (!LevelBuilder.CheckScene()) return;
         if (!RequirePlayer()) return;
 
         Transform enemies = EnemiesRoot();
-        MakeSlime("Slime 1", new Vector2(12f, 0.35f), 8f, 17f, enemies);
-        MakeSlime("Slime 2", new Vector2(53f, 0.35f), 49f, 57f, enemies);
+        MakeGoblin("Goblin 1", new Vector2(12f, 0.35f), 8f, 17f, enemies);
+        MakeGoblin("Goblin 2", new Vector2(53f, 0.35f), 49f, 57f, enemies);
 
-        LevelBuilder.Finish("Step 3 done: slimes are ready.");
+        LevelBuilder.Finish("Step 3 done: goblins are ready.");
     }
 
-    static void MakeSlime(string name, Vector2 pos, float leftX, float rightX, Transform parent)
+    static void MakeGoblin(string name, Vector2 pos, float leftX, float rightX, Transform parent)
     {
         LevelBuilder.Remove(name);
         LevelBuilder.Remove(name + " Point A");
@@ -49,10 +49,10 @@ public static class LevelBuilderStep3
         b.SetParent(parent);
         b.position = new Vector3(rightX, pos.y, 0f);
 
-        var slime = go.AddComponent<SlimeEnemy>();
-        LevelBuilder.Set(slime, "pointA", a);
-        LevelBuilder.Set(slime, "pointB", b);
-        LevelBuilder.Set(slime, "stateLabel", Label(go, "Patrol"));
+        var goblin = go.AddComponent<GoblinEnemy>();
+        LevelBuilder.Set(goblin, "pointA", a);
+        LevelBuilder.Set(goblin, "pointB", b);
+        LevelBuilder.Set(goblin, "stateLabel", Label(go, "Patrol"));
     }
 
     internal static bool RequirePlayer()

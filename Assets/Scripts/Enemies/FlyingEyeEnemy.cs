@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class BatEnemy : MonoBehaviour
+public class FlyingEyeEnemy : MonoBehaviour
 {
     enum State { Hover, WindUp, Dive, Return }
 

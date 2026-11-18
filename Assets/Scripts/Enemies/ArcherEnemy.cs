@@ -6,13 +6,12 @@ public class ArcherEnemy : MonoBehaviour
 {
     enum State { Idle, Aim, Shoot, Cooldown }
 
+    [SerializeField] ArcherStats stats;
+
     [Header("Idle")]
     [SerializeField] int startFacing = -1;
-    [SerializeField] float turnInterval = 3f;
 
     [Header("Attack")]
-    [SerializeField] float windUpTime = 0.6f;
-    [SerializeField] float cooldownTime = 1.6f;
     [SerializeField] Projectile arrowPrefab;
     [SerializeField] Vector2 bowOffset = new Vector2(0.5f, 0.2f);
     [SerializeField] LineRenderer aimLine;
@@ -30,6 +29,12 @@ public class ArcherEnemy : MonoBehaviour
     EnemyVision vision;
     PlayerHealth player;
     Color baseColor;
+
+    void Awake()
+    {
+        GetComponent<EnemyHealth>().Setup(stats.maxHealth, stats.scoreValue);
+        GetComponent<EnemyVision>().Setup(stats.viewDistance, stats.viewAngle);
+    }
 
     void Start()
     {
@@ -50,7 +55,7 @@ public class ArcherEnemy : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                if (stateTimer >= turnInterval) { Face(-facing); stateTimer = 0f; }
+                if (stateTimer >= stats.turnInterval) { Face(-facing); stateTimer = 0f; }
                 if (sees && EnemyUtils.IsOnScreen(transform.position)) ChangeState(State.Aim);
                 break;
 
@@ -61,22 +66,22 @@ public class ArcherEnemy : MonoBehaviour
                 aimDirection = ((Vector2)player.transform.position - bow).normalized;
                 aimLine.SetPosition(0, bow);
                 aimLine.SetPosition(1, player.transform.position);
-                float blink = Mathf.Lerp(6f, 20f, stateTimer / windUpTime);
+                float blink = Mathf.Lerp(6f, 20f, stateTimer / stats.windUpTime);
                 aimLine.enabled = Mathf.Sin(stateTimer * blink) > -0.3f;
-                if (stateTimer >= windUpTime) ChangeState(State.Shoot);
+                if (stateTimer >= stats.windUpTime) ChangeState(State.Shoot);
                 break;
 
             case State.Shoot:
                 if (arrowPrefab != null)
                 {
                     Projectile arrow = Instantiate(arrowPrefab, BowPosition(), Quaternion.identity);
-                    arrow.Launch(aimDirection);
+                    arrow.Launch(aimDirection, stats.arrowSpeed, stats.arrowDamage);
                 }
                 ChangeState(State.Cooldown);
                 break;
 
             case State.Cooldown:
-                if (stateTimer >= cooldownTime)
+                if (stateTimer >= stats.cooldownTime)
                     ChangeState(sees ? State.Aim : State.Idle);
                 break;
         }

@@ -36,12 +36,8 @@ public static class LevelBuilderStep5
 
         var vision = go.AddComponent<EnemyVision>();
         LevelBuilder.Set(vision, "obstacleMask", groundMask);
-        LevelBuilder.Set(vision, "viewDistance", 9f);
-        LevelBuilder.Set(vision, "viewAngle", 140f);
 
-        var hp = go.AddComponent<EnemyHealth>();
-        LevelBuilder.Set(hp, "maxHealth", 3);
-        LevelBuilder.Set(hp, "scoreValue", 200);
+        go.AddComponent<EnemyHealth>();
 
         var lineGo = new GameObject("Aim Line");
         lineGo.transform.SetParent(go.transform, false);
@@ -57,6 +53,7 @@ public static class LevelBuilderStep5
         line.enabled = false;
 
         var archer = go.AddComponent<ArcherEnemy>();
+        LevelBuilder.Set(archer, "stats", StatsAssets.Archer());
         LevelBuilder.Set(archer, "startFacing", -1);
         LevelBuilder.Set(archer, "arrowPrefab", arrow);
         LevelBuilder.Set(archer, "aimLine", line);

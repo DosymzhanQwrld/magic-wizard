@@ -34,6 +34,8 @@ public static class LevelBuilderStep2
         if (!player.TryGetComponent(out PlayerHealth health)) health = player.AddComponent<PlayerHealth>();
         if (!player.TryGetComponent(out PlayerShooter shooter)) shooter = player.AddComponent<PlayerShooter>();
         LevelBuilder.Set(shooter, "fireballPrefab", fireball);
+        LevelBuilder.Set(shooter, "stats", StatsAssets.Player());
+        LevelBuilder.Set(health, "stats", StatsAssets.Player());
 
         LevelBuilder.Remove("GameSession");
         var session = new GameObject("GameSession").AddComponent<GameSession>();
@@ -103,7 +105,6 @@ public static class LevelBuilderStep2
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         go.AddComponent<BoxCollider2D>().isTrigger = true;
         var p = go.AddComponent<Projectile>();
-        LevelBuilder.Set(p, "speed", speed);
         LevelBuilder.Set(p, "hitsPlayer", hitsPlayer);
         LevelBuilder.Set(p, "groundMask", groundMask);
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(go, $"{PrefabFolder}/{name}.prefab");

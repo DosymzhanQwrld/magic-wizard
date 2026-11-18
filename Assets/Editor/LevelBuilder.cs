@@ -47,6 +47,7 @@ public static class LevelBuilder
         player.AddComponent<BoxCollider2D>().sharedMaterial = MakeNoFriction();
         var controller = player.AddComponent<PlayerController>();
         Set(controller, "groundMask", 1 << groundLayer);
+        Set(controller, "stats", StatsAssets.Player());
 
         Camera cam = Camera.main;
         if (cam != null)

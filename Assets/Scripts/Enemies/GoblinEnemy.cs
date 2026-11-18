@@ -6,23 +6,13 @@ public class GoblinEnemy : MonoBehaviour
 {
     enum State { Patrol, Chase, WindUp, Lunge, Cooldown }
 
+    [SerializeField] GoblinStats stats;
+
     [Header("Patrol (2D waypoints)")]
     [SerializeField] Transform pointA;
     [SerializeField] Transform pointB;
-    [SerializeField] float patrolSpeed = 1.5f;
-
-    [Header("Chase")]
-    [SerializeField] float chaseSpeed = 3f;
-    [SerializeField] float attackRange = 1.8f;
-    [SerializeField] float loseSightTime = 1.5f;
 
     [Header("Attack")]
-    [SerializeField] float windUpTime = 0.5f;
-    [SerializeField] float lungeSpeed = 7f;
-    [SerializeField] float lungeTime = 0.25f;
-    [SerializeField] float cooldownTime = 1.2f;
-    [SerializeField] int damage = 1;
-    [SerializeField] float hitRadius = 0.8f;
     [SerializeField] Color windUpColor = new Color(0.89f, 0.29f, 0.29f);
 
     [Header("Debug")]
@@ -42,6 +32,12 @@ public class GoblinEnemy : MonoBehaviour
     PlayerHealth player;
     Color baseColor;
     Vector3 baseScale;
+
+    void Awake()
+    {
+        GetComponent<EnemyHealth>().Setup(stats.maxHealth, stats.scoreValue);
+        GetComponent<EnemyVision>().Setup(stats.viewDistance, stats.viewAngle);
+    }
 
     void Start()
     {
@@ -68,7 +64,7 @@ public class GoblinEnemy : MonoBehaviour
         switch (state)
         {
             case State.Patrol:
-                MoveTowards(patrolTarget.position.x, patrolSpeed);
+                MoveTowards(patrolTarget.position.x, stats.patrolSpeed);
                 if (Mathf.Abs(transform.position.x - patrolTarget.position.x) < 0.1f)
                     patrolTarget = patrolTarget == pointA ? pointB : pointA;
                 if (sees) ChangeState(State.Chase);
@@ -76,30 +72,30 @@ public class GoblinEnemy : MonoBehaviour
 
             case State.Chase:
                 if (!playerAlive) { ChangeState(State.Patrol); break; }
-                MoveTowards(player.transform.position.x, chaseSpeed);
+                MoveTowards(player.transform.position.x, stats.chaseSpeed);
                 float distance = Mathf.Abs(player.transform.position.x - transform.position.x);
-                if (sees && distance < attackRange && EnemyUtils.IsOnScreen(transform.position))
+                if (sees && distance < stats.attackRange && EnemyUtils.IsOnScreen(transform.position))
                     ChangeState(State.WindUp);
-                else if (Time.time - lastSeenTime > loseSightTime)
+                else if (Time.time - lastSeenTime > stats.loseSightTime)
                     ChangeState(State.Patrol);
                 break;
 
             case State.WindUp:
                 SetVelocityX(0f);
-                float t = stateTimer / windUpTime;
+                float t = stateTimer / stats.windUpTime;
                 transform.localScale = new Vector3(baseScale.x * (1f + 0.2f * t), baseScale.y * (1f - 0.3f * t), 1f);
-                if (stateTimer >= windUpTime) ChangeState(State.Lunge);
+                if (stateTimer >= stats.windUpTime) ChangeState(State.Lunge);
                 break;
 
             case State.Lunge:
-                SetVelocityX(facing * lungeSpeed);
+                SetVelocityX(facing * stats.lungeSpeed);
                 TryHitPlayer();
-                if (stateTimer >= lungeTime) ChangeState(State.Cooldown);
+                if (stateTimer >= stats.lungeTime) ChangeState(State.Cooldown);
                 break;
 
             case State.Cooldown:
                 SetVelocityX(0f);
-                if (stateTimer >= cooldownTime)
+                if (stateTimer >= stats.cooldownTime)
                     ChangeState(sees ? State.Chase : State.Patrol);
                 break;
         }
@@ -139,10 +135,10 @@ public class GoblinEnemy : MonoBehaviour
     void TryHitPlayer()
     {
         if (hitThisAttack || player == null) return;
-        if (Vector2.Distance(transform.position, player.transform.position) < hitRadius)
+        if (Vector2.Distance(transform.position, player.transform.position) < stats.hitRadius)
         {
             hitThisAttack = true;
-            player.TakeDamage(damage, transform.position);
+            player.TakeDamage(stats.damage, transform.position);
         }
     }
 }

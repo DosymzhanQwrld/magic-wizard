@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerShooter : MonoBehaviour
 {
+    [SerializeField] PlayerStats stats;
     [SerializeField] Projectile fireballPrefab;
-    [SerializeField] float cooldown = 0.5f;
     [SerializeField] Vector2 spawnOffset = new Vector2(0.6f, 0.1f);
     [SerializeField] MobileButton fireButton;
 
@@ -38,11 +38,11 @@ public class PlayerShooter : MonoBehaviour
 
         if (firePressed && Time.time >= nextShotTime)
         {
-            nextShotTime = Time.time + cooldown;
+            nextShotTime = Time.time + stats.fireballCooldown;
             int dir = controller.Facing;
             Vector2 pos = (Vector2)transform.position + new Vector2(spawnOffset.x * dir, spawnOffset.y);
             Projectile fireball = Instantiate(fireballPrefab, pos, Quaternion.identity);
-            fireball.Launch(new Vector2(dir, 0f));
+            fireball.Launch(new Vector2(dir, 0f), stats.fireballSpeed, stats.fireballDamage);
         }
     }
 }

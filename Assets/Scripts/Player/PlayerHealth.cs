@@ -4,10 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int maxHearts = 3;
-    [SerializeField] float invincibleTime = 1f;
-    [SerializeField] Vector2 knockback = new Vector2(5f, 6f);
-    [SerializeField] float knockbackLockTime = 0.25f;
+    [SerializeField] PlayerStats stats;
     [SerializeField] float fallDeathY = -6f;
     [SerializeField] Image[] heartImages;
 
@@ -24,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         controller = GetComponent<PlayerController>();
-        hearts = maxHearts;
+        hearts = stats.maxHearts;
         UpdateHearts();
     }
 
@@ -42,17 +39,17 @@ public class PlayerHealth : MonoBehaviour
         UpdateHearts();
         if (hearts == 0) { Die(); return; }
 
-        invincibleUntil = Time.time + invincibleTime;
+        invincibleUntil = Time.time + stats.invincibleTime;
         float dir = Mathf.Sign(transform.position.x - fromPosition.x);
         if (dir == 0f) dir = 1f;
-        rb.linearVelocity = new Vector2(dir * knockback.x, knockback.y);
+        rb.linearVelocity = new Vector2(dir * stats.knockback.x, stats.knockback.y);
         StartCoroutine(HurtRoutine());
     }
 
     IEnumerator HurtRoutine()
     {
         controller.InputLocked = true;
-        yield return new WaitForSeconds(knockbackLockTime);
+        yield return new WaitForSeconds(stats.knockbackLockTime);
         controller.InputLocked = false;
 
         while (Time.time < invincibleUntil)

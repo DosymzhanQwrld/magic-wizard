@@ -35,12 +35,8 @@ public static class LevelBuilderStep3
 
         var vision = go.AddComponent<EnemyVision>();
         LevelBuilder.Set(vision, "obstacleMask", groundMask);
-        LevelBuilder.Set(vision, "viewDistance", 6f);
-        LevelBuilder.Set(vision, "viewAngle", 120f);
 
-        var hp = go.AddComponent<EnemyHealth>();
-        LevelBuilder.Set(hp, "maxHealth", 2);
-        LevelBuilder.Set(hp, "scoreValue", 100);
+        go.AddComponent<EnemyHealth>();
 
         Transform a = new GameObject(name + " Point A").transform;
         a.SetParent(parent);
@@ -50,6 +46,7 @@ public static class LevelBuilderStep3
         b.position = new Vector3(rightX, pos.y, 0f);
 
         var goblin = go.AddComponent<GoblinEnemy>();
+        LevelBuilder.Set(goblin, "stats", StatsAssets.Goblin());
         LevelBuilder.Set(goblin, "pointA", a);
         LevelBuilder.Set(goblin, "pointB", b);
         LevelBuilder.Set(goblin, "stateLabel", Label(go, "Patrol"));

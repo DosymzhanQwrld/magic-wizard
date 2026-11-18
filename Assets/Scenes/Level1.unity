@@ -4591,17 +4591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92925d6a07543844593ef91708f29157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatEnemy
-  hoverAmplitude: 0.3
-  hoverSpeed: 2
-  detectRange: 5.5
-  windUpTime: 0.6
-  shakeAmount: 0.08
-  diveSpeed: 9
-  maxDiveTime: 1.2
-  returnSpeed: 4
-  cooldownTime: 1.5
-  damage: 1
-  hitRadius: 0.6
+  stats: {fileID: 11400000, guid: 921bb32098c89444ea23a4415986e566, type: 2}
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -4619,8 +4609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df01d96a486c843bfbfa68623316e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 1
-  scoreValue: 150
   blinkTime: 0.15
 --- !u!58 &924058220
 CircleCollider2D:
@@ -4913,10 +4901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41bea02e123fd3478d13338b35b209f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcherEnemy
+  stats: {fileID: 11400000, guid: 2d7af89e974266249ae1fd43e13c5f62, type: 2}
   startFacing: -1
-  turnInterval: 3
-  windUpTime: 0.6
-  cooldownTime: 1.6
   arrowPrefab: {fileID: 6978145964558315123, guid: d3e3771eb56cc0c49b4545133f80599e, type: 3}
   bowOffset: {x: 0.5, y: 0.2}
   aimLine: {fileID: 2046189632}
@@ -4934,8 +4920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df01d96a486c843bfbfa68623316e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  scoreValue: 200
   blinkTime: 0.15
 --- !u!114 &993092771
 MonoBehaviour:
@@ -4949,8 +4933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4388616f8df082842a2d2f4416ee9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyVision
-  viewDistance: 9
-  viewAngle: 140
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -5132,17 +5114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92925d6a07543844593ef91708f29157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatEnemy
-  hoverAmplitude: 0.3
-  hoverSpeed: 2
-  detectRange: 5.5
-  windUpTime: 0.6
-  shakeAmount: 0.08
-  diveSpeed: 9
-  maxDiveTime: 1.2
-  returnSpeed: 4
-  cooldownTime: 1.5
-  damage: 1
-  hitRadius: 0.6
+  stats: {fileID: 11400000, guid: 921bb32098c89444ea23a4415986e566, type: 2}
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -5160,8 +5132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df01d96a486c843bfbfa68623316e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 1
-  scoreValue: 150
   blinkTime: 0.15
 --- !u!58 &993298688
 CircleCollider2D:
@@ -6204,8 +6174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea255d399b64f94ca5c665583026da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 6
-  jumpVelocity: 12
+  stats: {fileID: 11400000, guid: 5123d1851cf708447ab8b28bb7767b93, type: 2}
   stickDeadZone: 0.2
   groundMask:
     serializedVersion: 2
@@ -6374,8 +6343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c46e52503392564c9249c4532d942b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
+  stats: {fileID: 11400000, guid: 5123d1851cf708447ab8b28bb7767b93, type: 2}
   fireballPrefab: {fileID: 4205561973261927025, guid: 6e2daf86b408a9b44b4aaf5adc9cd65b, type: 3}
-  cooldown: 0.5
   spawnOffset: {x: 0.6, y: 0.1}
   fireButton: {fileID: 1319863186}
 --- !u!114 &1188578800
@@ -6390,10 +6359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a37a9c91721b6c46a83e159b936ca8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHearts: 3
-  invincibleTime: 1
-  knockback: {x: 5, y: 6}
-  knockbackLockTime: 0.25
+  stats: {fileID: 11400000, guid: 5123d1851cf708447ab8b28bb7767b93, type: 2}
   fallDeathY: -6
   heartImages:
   - {fileID: 2019642924}
@@ -7015,7 +6981,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4291095039
   m_fontColor: {r: 1, g: 0.9137255, b: 0.76862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -7525,18 +7491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2845c2ade555849bd5a6a503a630be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeEnemy
+  stats: {fileID: 11400000, guid: 11e9a558a4a61054a9df891b9d986ea2, type: 2}
   pointA: {fileID: 700327646}
   pointB: {fileID: 1873718510}
-  patrolSpeed: 1.5
-  chaseSpeed: 3
-  attackRange: 1.8
-  loseSightTime: 1.5
-  windUpTime: 0.5
-  lungeSpeed: 7
-  lungeTime: 0.25
-  cooldownTime: 1.2
-  damage: 1
-  hitRadius: 0.8
   windUpColor: {r: 0.89, g: 0.29, b: 0.29, a: 1}
   stateLabel: {fileID: 108371982}
 --- !u!114 &1570453908
@@ -7551,8 +7508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df01d96a486c843bfbfa68623316e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 2
-  scoreValue: 100
   blinkTime: 0.15
 --- !u!114 &1570453909
 MonoBehaviour:
@@ -7566,8 +7521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4388616f8df082842a2d2f4416ee9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyVision
-  viewDistance: 6
-  viewAngle: 120
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -7994,10 +7947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41bea02e123fd3478d13338b35b209f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcherEnemy
+  stats: {fileID: 11400000, guid: 2d7af89e974266249ae1fd43e13c5f62, type: 2}
   startFacing: -1
-  turnInterval: 3
-  windUpTime: 0.6
-  cooldownTime: 1.6
   arrowPrefab: {fileID: 6978145964558315123, guid: d3e3771eb56cc0c49b4545133f80599e, type: 3}
   bowOffset: {x: 0.5, y: 0.2}
   aimLine: {fileID: 742003120}
@@ -8015,8 +7966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df01d96a486c843bfbfa68623316e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  scoreValue: 200
   blinkTime: 0.15
 --- !u!114 &1720148875
 MonoBehaviour:
@@ -8030,8 +7979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4388616f8df082842a2d2f4416ee9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyVision
-  viewDistance: 9
-  viewAngle: 140
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -8816,18 +8763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2845c2ade555849bd5a6a503a630be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeEnemy
+  stats: {fileID: 11400000, guid: 11e9a558a4a61054a9df891b9d986ea2, type: 2}
   pointA: {fileID: 291172757}
   pointB: {fileID: 169972732}
-  patrolSpeed: 1.5
-  chaseSpeed: 3
-  attackRange: 1.8
-  loseSightTime: 1.5
-  windUpTime: 0.5
-  lungeSpeed: 7
-  lungeTime: 0.25
-  cooldownTime: 1.2
-  damage: 1
-  hitRadius: 0.8
   windUpColor: {r: 0.89, g: 0.29, b: 0.29, a: 1}
   stateLabel: {fileID: 1746468755}
 --- !u!114 &1771455602
@@ -8842,8 +8780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df01d96a486c843bfbfa68623316e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 2
-  scoreValue: 100
   blinkTime: 0.15
 --- !u!114 &1771455603
 MonoBehaviour:
@@ -8857,8 +8793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4388616f8df082842a2d2f4416ee9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyVision
-  viewDistance: 6
-  viewAngle: 120
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256

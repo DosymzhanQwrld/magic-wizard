@@ -3,13 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float speed = 10f;
-    [SerializeField] int damage = 1;
     [SerializeField] float lifeTime = 3f;
     [SerializeField] bool hitsPlayer;
     [SerializeField] LayerMask groundMask;
 
     Rigidbody2D rb;
+    int damage;
 
     void Awake()
     {
@@ -17,8 +16,9 @@ public class Projectile : MonoBehaviour
         rb.gravityScale = 0f;
     }
 
-    public void Launch(Vector2 direction)
+    public void Launch(Vector2 direction, float speed, int hitDamage)
     {
+        damage = hitDamage;
         Vector2 dir = direction.normalized;
         rb.linearVelocity = dir * speed;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

@@ -26,11 +26,10 @@ public static class LevelBuilderStep4
         go.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         go.AddComponent<CircleCollider2D>();
 
-        var hp = go.AddComponent<EnemyHealth>();
-        LevelBuilder.Set(hp, "maxHealth", 1);
-        LevelBuilder.Set(hp, "scoreValue", 150);
+        go.AddComponent<EnemyHealth>();
 
         var eye = go.AddComponent<FlyingEyeEnemy>();
+        LevelBuilder.Set(eye, "stats", StatsAssets.FlyingEye());
         LevelBuilder.Set(eye, "groundMask", 1 << LevelBuilder.EnsureLayer("Ground"));
         LevelBuilder.Set(eye, "stateLabel", LevelBuilderStep3.Label(go, "Hover"));
     }

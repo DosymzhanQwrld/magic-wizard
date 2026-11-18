@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
-    [SerializeField] float viewDistance = 6f;
-    [SerializeField] float viewAngle = 100f;
+    float viewDistance;
+    float viewAngle;
     [SerializeField] LayerMask obstacleMask;
     [SerializeField] Vector2 eyeOffset = new Vector2(0f, 0.2f);
 
@@ -16,6 +16,12 @@ public class EnemyVision : MonoBehaviour
     {
         PlayerHealth p = FindFirstObjectByType<PlayerHealth>();
         if (p != null) Player = p.transform;
+    }
+
+    public void Setup(float distance, float angle)
+    {
+        viewDistance = distance;
+        viewAngle = angle;
     }
 
     public bool CanSee(int facing)

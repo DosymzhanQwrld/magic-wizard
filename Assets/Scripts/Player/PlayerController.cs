@@ -4,9 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
-    [SerializeField] float moveSpeed = 6f;
-    [SerializeField] float jumpVelocity = 12f;
+    [SerializeField] PlayerStats stats;
     [SerializeField] float stickDeadZone = 0.2f;
 
     [Header("Ground check")]
@@ -65,9 +63,9 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 v = rb.linearVelocity;
-        v.x = x * moveSpeed;
+        v.x = x * stats.moveSpeed;
         if (jumpPressed && IsGrounded())
-            v.y = jumpVelocity;
+            v.y = stats.jumpVelocity;
         rb.linearVelocity = v;
     }
 

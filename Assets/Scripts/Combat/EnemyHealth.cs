@@ -1,20 +1,25 @@
 using System.Collections;
 using UnityEngine;
+
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 2;
-    [SerializeField] int scoreValue = 100;
     [SerializeField] float blinkTime = 0.15f;
 
     public bool IsDead { get; private set; }
 
     int health;
+    int scoreValue;
     SpriteRenderer sr;
 
     void Awake()
     {
-        health = maxHealth;
         sr = GetComponent<SpriteRenderer>();
+    }
+
+    public void Setup(int maxHealth, int score)
+    {
+        health = maxHealth;
+        scoreValue = score;
     }
 
     public void TakeDamage(int damage)

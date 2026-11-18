@@ -5,20 +5,8 @@ public class FlyingEyeEnemy : MonoBehaviour
 {
     enum State { Hover, WindUp, Dive, Return }
 
-    [Header("Hover")]
-    [SerializeField] float hoverAmplitude = 0.3f;
-    [SerializeField] float hoverSpeed = 2f;
-    [SerializeField] float detectRange = 5.5f;
-
     [Header("Attack")]
-    [SerializeField] float windUpTime = 0.6f;
-    [SerializeField] float shakeAmount = 0.08f;
-    [SerializeField] float diveSpeed = 9f;
-    [SerializeField] float maxDiveTime = 1.2f;
-    [SerializeField] float returnSpeed = 4f;
-    [SerializeField] float cooldownTime = 1.5f;
-    [SerializeField] int damage = 1;
-    [SerializeField] float hitRadius = 0.6f;
+    [SerializeField] FlyingEyeStats stats;
     [SerializeField] LayerMask groundMask;
     [SerializeField] Color windUpColor = new Color(0.89f, 0.29f, 0.29f);
 
@@ -37,6 +25,11 @@ public class FlyingEyeEnemy : MonoBehaviour
     PlayerHealth player;
     Color baseColor;
 
+    void Awake()
+    {
+        GetComponent<EnemyHealth>().Setup(stats.maxHealth, stats.scoreValue);
+    }
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -54,9 +47,9 @@ public class FlyingEyeEnemy : MonoBehaviour
         switch (state)
         {
             case State.Hover:
-                transform.position = home + Vector3.up * Mathf.Sin(Time.time * hoverSpeed) * hoverAmplitude;
+                transform.position = home + Vector3.up * Mathf.Sin(Time.time * stats.hoverSpeed) * stats.hoverAmplitude;
                 if (playerAlive && Time.time >= nextAttackTime
-                    && Vector2.Distance(transform.position, player.transform.position) < detectRange
+                    && Vector2.Distance(transform.position, player.transform.position) < stats.detectRange
                     && EnemyUtils.IsOnScreen(transform.position))
                 {
                     ChangeState(State.WindUp);
@@ -64,9 +57,9 @@ public class FlyingEyeEnemy : MonoBehaviour
                 break;
 
             case State.WindUp:
-                transform.position = windUpStart + (Vector3)(Random.insideUnitCircle * shakeAmount);
+                transform.position = windUpStart + (Vector3)(Random.insideUnitCircle * stats.shakeAmount);
                 sr.flipX = player != null && player.transform.position.x < transform.position.x;
-                if (stateTimer >= windUpTime)
+                if (stateTimer >= stats.windUpTime)
                 {
                     transform.position = windUpStart;
                     ChangeState(State.Dive);
@@ -74,19 +67,19 @@ public class FlyingEyeEnemy : MonoBehaviour
                 break;
 
             case State.Dive:
-                transform.position = Vector3.MoveTowards(transform.position, diveTarget, diveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, diveTarget, stats.diveSpeed * Time.deltaTime);
                 TryHitPlayer();
                 bool reached = Vector3.Distance(transform.position, diveTarget) < 0.05f;
                 bool hitGround = Physics2D.OverlapCircle(transform.position, 0.2f, groundMask) != null;
-                if (reached || hitGround || hitThisAttack || stateTimer >= maxDiveTime)
+                if (reached || hitGround || hitThisAttack || stateTimer >= stats.maxDiveTime)
                     ChangeState(State.Return);
                 break;
 
             case State.Return:
-                transform.position = Vector3.MoveTowards(transform.position, home, returnSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, home, stats.returnSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, home) < 0.05f)
                 {
-                    nextAttackTime = Time.time + cooldownTime;
+                    nextAttackTime = Time.time + stats.cooldownTime;
                     ChangeState(State.Hover);
                 }
                 break;
@@ -111,16 +104,16 @@ public class FlyingEyeEnemy : MonoBehaviour
     void TryHitPlayer()
     {
         if (hitThisAttack || player == null) return;
-        if (Vector2.Distance(transform.position, player.transform.position) < hitRadius)
+        if (Vector2.Distance(transform.position, player.transform.position) < stats.hitRadius)
         {
             hitThisAttack = true;
-            player.TakeDamage(damage, transform.position);
+            player.TakeDamage(stats.damage, transform.position);
         }
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(Application.isPlaying ? home : transform.position, detectRange);
+        if (stats != null) Gizmos.DrawWireSphere(Application.isPlaying ? home : transform.position, stats.detectRange);
     }
 }

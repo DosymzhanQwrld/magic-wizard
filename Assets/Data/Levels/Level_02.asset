@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e864421d418354c8f36faff2c5a7c1, type: 3}
+  m_Name: Level_02
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelNumber: 2
+  displayName: LEVEL 2
+  timeLimit: 150
+  playerSpawn: {x: 0, y: 0}
+  goalPosition: {x: 70, y: 0}
+  cameraMinX: 4
+  cameraMaxX: 64
+  groundTopSprite: {fileID: 21300000, guid: fef1abebf9103844f9a843487bf0045b, type: 3}
+  groundFillSprite: {fileID: 21300000, guid: 3e60da3da0ec9a34e9dc67baf234ae25, type: 3}
+  groundTopHeight: 0.5
+  backgroundSprite: {fileID: 21300000, guid: 0b0cde044d287c345a66fd94daac59ae, type: 3}
+  skyColor: {r: 0.101960786, g: 0.05490196, b: 0.078431375, a: 1}
+  blocks:
+  - center: {x: 5, y: -0.5}
+    size: {x: 18, y: 1}
+  - center: {x: 25.5, y: -0.5}
+    size: {x: 17, y: 1}
+  - center: {x: 54.25, y: -0.5}
+    size: {x: 35.5, y: 1}
+  - center: {x: -4.5, y: 5}
+    size: {x: 1, y: 12}
+  - center: {x: 72.5, y: 5}
+    size: {x: 1, y: 12}
+  - center: {x: 20, y: 0.75}
+    size: {x: 1, y: 1.5}
+  - center: {x: 24, y: 2.5}
+    size: {x: 4, y: 0.5}
+  - center: {x: 45, y: 1.5}
+    size: {x: 2.5, y: 0.5}
+  - center: {x: 55, y: 0.75}
+    size: {x: 1, y: 1.5}
+  - center: {x: 61, y: 2.5}
+    size: {x: 3, y: 0.5}
+  lava:
+  - center: {x: 15.5, y: -1.1}
+    size: {x: 3, y: 1.6}
+  - center: {x: 35.25, y: -1.1}
+    size: {x: 2.5, y: 1.6}
+  enemies:
+  - type: 0
+    position: {x: 8, y: 0}
+    patrolLeft: 3
+    patrolRight: 13
+    facing: 0
+  - type: 2
+    position: {x: 22.4, y: 2.75}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: -1
+  - type: 1
+    position: {x: 30, y: 4.5}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: 0
+  - type: 0
+    position: {x: 42, y: 0}
+    patrolLeft: 38
+    patrolRight: 50
+    facing: 0
+  - type: 1
+    position: {x: 52, y: 4.8}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: 0
+  - type: 2
+    position: {x: 59.9, y: 2.75}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: -1
+  - type: 0
+    position: {x: 64, y: 0}
+    patrolLeft: 57
+    patrolRight: 68
+    facing: 0
+  hasBoss: 0
+  bossPosition: {x: 0, y: 0}
+  bossLeftX: 0
+  bossRightX: 0
+  bossActivateX: 0

@@ -13,7 +13,6 @@ public static class LevelBuilder
     static readonly Color GrassColor = Hex("639922");
     static readonly Color SkyColor = Hex("26215C");
 
-    [MenuItem("Magic Wizard/Step 1 - Player and Level")]
     public static void Step1()
     {
         if (!CheckScene()) return;

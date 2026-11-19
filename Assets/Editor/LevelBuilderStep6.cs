@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public static class LevelBuilderStep6
 {
-    [MenuItem("Magic Wizard/Step 6 - Portal and Victory")]
     public static void Step6()
     {
         if (!LevelBuilder.CheckScene()) return;

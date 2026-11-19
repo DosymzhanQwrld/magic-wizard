@@ -8,7 +8,6 @@ public static class LevelBuilderStep2
 {
     const string PrefabFolder = "Assets/Prefabs";
 
-    [MenuItem("Magic Wizard/Step 2 - Fireball and Health")]
     public static void Step2()
     {
         if (!LevelBuilder.CheckScene()) return;

@@ -9,7 +9,6 @@ public static class ApkBuilder
     const string OutputFolder = "Builds";
     const string ApkName = "MagicWizard.apk";
 
-    [MenuItem("Magic Wizard/Build Android APK")]
     public static void Build()
     {
         if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
@@ -29,7 +28,7 @@ public static class ApkBuilder
 
         var options = new BuildPlayerOptions
         {
-            scenes = new[] { "Assets/Scenes/MainMenu.unity", "Assets/Scenes/Level1.unity" },
+            scenes = new[] { "Assets/Scenes/MainMenu.unity", "Assets/Scenes/Level1.unity", "Assets/Scenes/Level2.unity", "Assets/Scenes/Level3.unity" },
             locationPathName = path,
             target = BuildTarget.Android,
             options = BuildOptions.None

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e864421d418354c8f36faff2c5a7c1, type: 3}
+  m_Name: Level_03
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelNumber: 3
+  displayName: LEVEL 3
+  timeLimit: 180
+  playerSpawn: {x: 0, y: 0}
+  goalPosition: {x: 68, y: 0}
+  cameraMinX: 4
+  cameraMaxX: 61
+  groundTopSprite: {fileID: 21300000, guid: 323c87749dadf0d4285284d60b3ae6d5, type: 3}
+  groundFillSprite: {fileID: 21300000, guid: e6ae5e306b5bf5542aeef3b8a32f37cd, type: 3}
+  groundTopHeight: 0.58
+  backgroundSprite: {fileID: 21300000, guid: 53060b199e130f14d99375a79521ab0e, type: 3}
+  skyColor: {r: 0.16470589, g: 0.09411765, b: 0.2509804, a: 1}
+  blocks:
+  - center: {x: 8, y: -0.5}
+    size: {x: 24, y: 1}
+  - center: {x: 46.25, y: -0.5}
+    size: {x: 47.5, y: 1}
+  - center: {x: -4.5, y: 5}
+    size: {x: 1, y: 12}
+  - center: {x: 70.5, y: 5}
+    size: {x: 1, y: 12}
+  - center: {x: 29, y: 0.75}
+    size: {x: 1, y: 1.5}
+  - center: {x: 34, y: 2.5}
+    size: {x: 3, y: 0.5}
+  lava:
+  - center: {x: 21.25, y: -1.1}
+    size: {x: 2.5, y: 1.6}
+  enemies:
+  - type: 0
+    position: {x: 10, y: 0}
+    patrolLeft: 5
+    patrolRight: 18
+    facing: 0
+  - type: 1
+    position: {x: 26, y: 4.5}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: 0
+  - type: 2
+    position: {x: 32.9, y: 2.75}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: -1
+  hasBoss: 1
+  bossPosition: {x: 62, y: 2.3}
+  bossLeftX: 53
+  bossRightX: 66
+  bossActivateX: 46

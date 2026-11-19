@@ -3,7 +3,6 @@ using UnityEngine;
 
 public static class LevelBuilderStep4
 {
-    [MenuItem("Magic Wizard/Step 4 - Flying Eye Enemy")]
     public static void Step4()
     {
         if (!LevelBuilder.CheckScene()) return;

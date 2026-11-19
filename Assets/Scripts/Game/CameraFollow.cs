@@ -12,6 +12,16 @@ public class CameraFollow : MonoBehaviour
     float velocityX;
     float velocityY;
 
+    public void SetBounds(float min, float max)
+    {
+        minX = min;
+        maxX = max;
+        if (target == null) return;
+        Vector3 p = transform.position;
+        p.x = Mathf.Clamp(target.position.x, minX, maxX);
+        transform.position = p;
+    }
+
     void LateUpdate()
     {
         if (target == null) return;

@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         GameSession.ResetTries();
+        LevelSelection.Index = 0;
         SceneManager.LoadScene("Level1");
     }
 

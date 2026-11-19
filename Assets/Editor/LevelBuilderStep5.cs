@@ -6,7 +6,6 @@ public static class LevelBuilderStep5
 {
     const string ArtFolder = "Assets/Art/Generated";
 
-    [MenuItem("Magic Wizard/Step 5 - Archer Enemy")]
     public static void Step5()
     {
         if (!LevelBuilder.CheckScene()) return;

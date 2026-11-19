@@ -4,7 +4,6 @@ using UnityEngine;
 
 public static class LevelBuilderStep3
 {
-    [MenuItem("Magic Wizard/Step 3 - Goblin Enemy")]
     public static void Step3()
     {
         if (!LevelBuilder.CheckScene()) return;

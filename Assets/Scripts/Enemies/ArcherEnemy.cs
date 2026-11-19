@@ -36,6 +36,11 @@ public class ArcherEnemy : MonoBehaviour
         GetComponent<EnemyVision>().Setup(stats.viewDistance, stats.viewAngle);
     }
 
+    public void SetStartFacing(int dir)
+    {
+        startFacing = dir;
+    }
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();

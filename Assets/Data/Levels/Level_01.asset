@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e864421d418354c8f36faff2c5a7c1, type: 3}
+  m_Name: Level_01
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelNumber: 1
+  displayName: LEVEL 1
+  timeLimit: 120
+  playerSpawn: {x: 0, y: 0.02}
+  goalPosition: {x: 62.5, y: 0}
+  cameraMinX: 4
+  cameraMaxX: 56
+  blocks:
+  - center: {x: 8, y: -0.5}
+    size: {x: 24, y: 1}
+  - center: {x: 43, y: -0.5}
+    size: {x: 42, y: 1}
+  - center: {x: -4.5, y: 5}
+    size: {x: 1, y: 12}
+  - center: {x: 64.5, y: 5}
+    size: {x: 1, y: 12}
+  - center: {x: 27, y: 1.55}
+    size: {x: 2.5, y: 0.5}
+  - center: {x: 37, y: 0.75}
+    size: {x: 1, y: 1.5}
+  - center: {x: 42.5, y: 2.5}
+    size: {x: 3.5, y: 0.5}
+  - center: {x: 59.5, y: 2.5}
+    size: {x: 3, y: 0.5}
+  lava:
+  - center: {x: 21, y: -1.1}
+    size: {x: 2, y: 1.6}
+  enemies:
+  - type: 0
+    position: {x: 12, y: 0.02}
+    patrolLeft: 8
+    patrolRight: 17
+    facing: 0
+  - type: 1
+    position: {x: 29, y: 4.5}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: 0
+  - type: 2
+    position: {x: 41.2, y: 2.77}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: -1
+  - type: 0
+    position: {x: 53, y: 0.02}
+    patrolLeft: 49
+    patrolRight: 57
+    facing: 0
+  - type: 1
+    position: {x: 55, y: 4.8}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: 0
+  - type: 2
+    position: {x: 58.5, y: 2.77}
+    patrolLeft: 0
+    patrolRight: 0
+    facing: -1

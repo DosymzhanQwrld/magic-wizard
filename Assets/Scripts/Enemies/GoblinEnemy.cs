@@ -39,6 +39,12 @@ public class GoblinEnemy : MonoBehaviour
         GetComponent<EnemyVision>().Setup(stats.viewDistance, stats.viewAngle);
     }
 
+    public void SetPatrol(Transform a, Transform b)
+    {
+        pointA = a;
+        pointB = b;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

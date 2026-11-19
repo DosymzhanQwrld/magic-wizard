@@ -15,7 +15,6 @@ public static class LevelBuilderStep8
     const float BackgroundWidth = 24f;
     const float TileSize = 0.5f;
 
-    [MenuItem("Magic Wizard/Step 8 - Ground and Background")]
     public static void Step8()
     {
         if (!LevelBuilder.CheckScene()) return;
@@ -41,7 +40,6 @@ public static class LevelBuilderStep8
         LevelBuilder.Finish("Step 8 done: ground, background and pause menu look are ready.");
     }
 
-    [MenuItem("Magic Wizard/Step 9 - Main Menu Look")]
     public static void Step9()
     {
         var scene = EditorSceneManager.GetActiveScene();

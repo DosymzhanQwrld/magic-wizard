@@ -10,7 +10,6 @@ public static class LevelBuilderStep7
     const float WizardPixelsPerUnit = 60f;
     const float MonsterPixelsPerUnit = 40f;
 
-    [MenuItem("Magic Wizard/Step 7 - Sprites and Lava")]
     public static void Step7()
     {
         if (!LevelBuilder.CheckScene()) return;

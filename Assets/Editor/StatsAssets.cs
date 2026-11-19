@@ -79,6 +79,26 @@ public static class StatsAssets
         });
     }
 
+    public static BossStats Boss()
+    {
+        return GetOrCreate<BossStats>("BossStats", s =>
+        {
+            s.maxHealth = 20;
+            s.scoreValue = 1000;
+            s.flySpeed = 2f;
+            s.hoverAmplitude = 0.3f;
+            s.hoverSpeed = 1.5f;
+            s.shootInterval = 2.4f;
+            s.windUpTime = 0.8f;
+            s.projectileSpeed = 6f;
+            s.projectileDamage = 1;
+            s.phase2HealthFraction = 0.5f;
+            s.phase2SpeedMultiplier = 2f;
+            s.phase2ProjectileCount = 3;
+            s.phase2SpreadAngle = 20f;
+        });
+    }
+
     static T GetOrCreate<T>(string name, System.Action<T> fill) where T : ScriptableObject
     {
         string path = $"{Folder}/{name}.asset";

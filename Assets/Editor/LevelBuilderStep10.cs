@@ -3,7 +3,6 @@ using UnityEngine;
 
 public static class LevelBuilderStep10
 {
-    [MenuItem("Magic Wizard/Step 10 - Stats Data Assets")]
     public static void Step10()
     {
         if (!LevelBuilder.CheckScene()) return;

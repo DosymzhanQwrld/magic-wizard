@@ -68,6 +68,13 @@ public static class ClaudeBridge
             case "refresh":
                 AssetDatabase.Refresh();
                 break;
+            case "shot":
+                ScreenCapture.CaptureScreenshot(string.IsNullOrEmpty(arg) ? "Temp/claude-shot.png" : arg);
+                log.AppendLine("screenshot requested");
+                break;
+            case "click":
+                Click(arg);
+                break;
             case "call":
                 Call(arg);
                 break;
@@ -102,6 +109,19 @@ public static class ClaudeBridge
                 log.AppendLine("unknown command: " + cmd);
                 break;
         }
+    }
+
+    static void Click(string objectName)
+    {
+        foreach (var button in UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>(FindObjectsSortMode.None))
+        {
+            if (button.name != objectName) continue;
+            if (!button.interactable) { log.AppendLine("button is not interactable: " + objectName); return; }
+            button.onClick.Invoke();
+            log.AppendLine("clicked " + objectName);
+            return;
+        }
+        log.AppendLine("active button not found: " + objectName);
     }
 
     static void Call(string target)

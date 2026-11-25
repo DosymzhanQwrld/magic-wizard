@@ -81,6 +81,7 @@ public class ArcherEnemy : MonoBehaviour
                 {
                     Projectile arrow = Instantiate(arrowPrefab, BowPosition(), Quaternion.identity);
                     arrow.Launch(aimDirection, stats.arrowSpeed, stats.arrowDamage);
+                    Sfx.Play(Sound.Arrow);
                 }
                 ChangeState(State.Cooldown);
                 break;
@@ -98,6 +99,7 @@ public class ArcherEnemy : MonoBehaviour
         stateTimer = 0f;
         sr.color = next == State.Aim ? windUpColor : baseColor;
         if (aimLine != null) aimLine.enabled = next == State.Aim;
+        if (next == State.Aim) Sfx.Play(Sound.WindupArcher);
         if (stateLabel != null) stateLabel.text = next.ToString();
     }
 

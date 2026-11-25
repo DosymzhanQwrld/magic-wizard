@@ -114,6 +114,7 @@ public class GoblinEnemy : MonoBehaviour
         hitThisAttack = false;
         sr.color = next == State.WindUp ? windUpColor : baseColor;
         transform.localScale = baseScale;
+        if (next == State.WindUp) Sfx.Play(Sound.WindupGoblin);
         if (stateLabel != null) stateLabel.text = next.ToString();
     }
 

@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
         hearts = Mathf.Max(0, hearts - damage);
         UpdateHearts();
         if (hearts == 0) { Die(); return; }
+        Sfx.Play(Sound.HitPlayer);
 
         invincibleUntil = Time.time + stats.invincibleTime;
         float dir = Mathf.Sign(transform.position.x - fromPosition.x);
@@ -60,6 +61,13 @@ public class PlayerHealth : MonoBehaviour
         sr.enabled = true;
     }
 
+    public void Heal(int amount)
+    {
+        if (IsDead) return;
+        hearts = Mathf.Min(stats.maxHearts, hearts + amount);
+        UpdateHearts();
+    }
+
     public void Kill()
     {
         Die();
@@ -75,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         sr.enabled = true;
         sr.color = Color.gray;
+        Sfx.Play(Sound.DeathPlayer);
         if (GameSession.Instance != null) GameSession.Instance.PlayerDied();
     }
 

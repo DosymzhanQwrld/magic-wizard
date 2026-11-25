@@ -43,6 +43,7 @@ public class PlayerShooter : MonoBehaviour
             Vector2 pos = (Vector2)transform.position + new Vector2(spawnOffset.x * dir, spawnOffset.y);
             Projectile fireball = Instantiate(fireballPrefab, pos, Quaternion.identity);
             fireball.Launch(new Vector2(dir, 0f), stats.fireballSpeed, stats.fireballDamage);
+            Sfx.Play(Sound.Fireball);
         }
     }
 }

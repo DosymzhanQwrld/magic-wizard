@@ -59,6 +59,7 @@ public class BossEnemy : MonoBehaviour
     {
         health = GetComponent<EnemyHealth>();
         health.Setup(stats.maxHealth, stats.scoreValue);
+        health.SoundPitch = 0.7f;
         health.Damaged += OnDamaged;
         health.Died += OnDied;
     }
@@ -139,6 +140,7 @@ public class BossEnemy : MonoBehaviour
         Vector2 mouth = (Vector2)transform.position + new Vector2(mouthOffset.x * facing, mouthOffset.y);
         Vector2 aim = ((Vector2)player.transform.position - mouth).normalized;
         int count = enraged ? stats.phase2ProjectileCount : 1;
+        Sfx.Play(Sound.Fireball, 0.75f);
 
         for (int i = 0; i < count; i++)
         {
@@ -187,7 +189,11 @@ public class BossEnemy : MonoBehaviour
         state = next;
         stateTimer = 0f;
         sr.color = CurrentBaseColor();
-        if (next == State.WindUp) PlayClip(attackFrames, false);
+        if (next == State.WindUp)
+        {
+            PlayClip(attackFrames, false);
+            Sfx.Play(Sound.WindupBoss, enraged ? 1.3f : 1f);
+        }
         else if (next == State.Fly || next == State.Sleep) PlayClip(flyFrames, true);
         UpdateLabel();
     }

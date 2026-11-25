@@ -79,6 +79,7 @@ public class GameSession : MonoBehaviour
     {
         if (levelOver) return;
         levelOver = true;
+        Sfx.Play(Sound.Lose, 1f, 0.5f);
         StartCoroutine(RestartAfterDelay());
     }
 
@@ -95,6 +96,7 @@ public class GameSession : MonoBehaviour
         levelOver = true;
         if (victoryPanel != null) victoryPanel.SetActive(true);
         timerRunning = false;
+        Sfx.Play(Sound.Win);
         SaveSystem.CompleteLevel(levelNumber, score, levelCount);
         if (victoryText != null) victoryText.text = $"{levelName} COMPLETE\nTries: {Tries}   Score: {score}\nBest: {SaveSystem.GetLevelBest(levelNumber)}";
         Debug.Log($"{levelName} complete in {Tries} tries");

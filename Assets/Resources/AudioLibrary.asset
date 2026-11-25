@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29b16e22224c014e98646c966d3cd57, type: 3}
+  m_Name: AudioLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::AudioLibrary
+  mixer: {fileID: 24100000, guid: d81f8be5bf6a13c4eac98dac79bbdac3, type: 2}
+  menuMusic: {fileID: 8300000, guid: 7600b40686ff6994b8acb7d5de16fd7e, type: 3}
+  levelMusic: {fileID: 8300000, guid: 1ad2a4fd8864ffc40a43192d2d66a585, type: 3}
+  jump:
+  - {fileID: 8300000, guid: 89fb048fc3a09e24ab9f962a52458bcd, type: 3}
+  - {fileID: 8300000, guid: a7e0c5e8c13c3a947b0070384f0921a9, type: 3}
+  - {fileID: 8300000, guid: bfa50d10a5c38924d8dcc7f96111e053, type: 3}
+  fireball:
+  - {fileID: 8300000, guid: 9231f1374450fc649821abe223bbf27b, type: 3}
+  arrow:
+  - {fileID: 8300000, guid: d4daec8e4cd424b47bd7a46cd448ef97, type: 3}
+  hitPlayer:
+  - {fileID: 8300000, guid: d3c3ddbf902ddbe4d860143bc85768d2, type: 3}
+  - {fileID: 8300000, guid: 236180b6cbc3e5c4c97504145444ceb3, type: 3}
+  - {fileID: 8300000, guid: 76dbc697de86afa44b19fb94bf98c230, type: 3}
+  hitEnemy:
+  - {fileID: 8300000, guid: 62b618c6a6fdeab4889ca555d0935153, type: 3}
+  - {fileID: 8300000, guid: 0ce702c3dfdfa0046b8d276398d74b0f, type: 3}
+  - {fileID: 8300000, guid: ae98a98a223445946a297cae70397e29, type: 3}
+  pickup:
+  - {fileID: 8300000, guid: d044d2a0cb0fb614e913b104325f9d3f, type: 3}
+  windupGoblin:
+  - {fileID: 8300000, guid: 8937f8ad134d9204085097e50037853a, type: 3}
+  windupEye:
+  - {fileID: 8300000, guid: e0b46f96e587d7b44a71db6536eda203, type: 3}
+  windupArcher:
+  - {fileID: 8300000, guid: fb2da79b79c4b834dbbeb5622163eafd, type: 3}
+  windupBoss:
+  - {fileID: 8300000, guid: 98845ea3ec990a54b81842fecf499db4, type: 3}
+  deathPlayer:
+  - {fileID: 8300000, guid: e78077e2be5a30d468f4518b017ee3d1, type: 3}
+  deathEnemy:
+  - {fileID: 8300000, guid: 06ed57cadc359cd40aaa72809098b029, type: 3}
+  - {fileID: 8300000, guid: 4e7980cc533a3b14aade8845e9669d40, type: 3}
+  uiClick:
+  - {fileID: 8300000, guid: 70d444339bfdee546972fba7810fbe48, type: 3}
+  win:
+  - {fileID: 8300000, guid: 5609c5a6b8fa94a4e8463e8496925e5e, type: 3}
+  lose:
+  - {fileID: 8300000, guid: 897be63b4e8206d419cbefe0090aa4e6, type: 3}

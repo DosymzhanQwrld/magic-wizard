@@ -1,4 +1,5 @@
 using System;
+using Random = UnityEngine.Random;
 using System.Collections;
 using UnityEngine;
 
@@ -6,10 +7,12 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float blinkTime = 0.15f;
     [SerializeField] bool destroyOnDeath = true;
+    [SerializeField, Range(0f, 1f)] float heartDropChance = 0.5f;
 
     public bool IsDead { get; private set; }
     public int Max { get; private set; }
     public float Fraction => Max > 0 ? (float)health / Max : 0f;
+    public float SoundPitch { get; set; } = 1f;
 
     public event Action Damaged;
     public event Action Died;
@@ -39,10 +42,16 @@ public class EnemyHealth : MonoBehaviour
         {
             IsDead = true;
             if (GameSession.Instance != null) GameSession.Instance.AddScore(scoreValue);
+            Sfx.Play(Sound.DeathEnemy, SoundPitch);
             Died?.Invoke();
-            if (destroyOnDeath) Destroy(gameObject);
+            if (destroyOnDeath)
+            {
+                if (Random.value < heartDropChance) HeartPickup.Spawn(transform.position);
+                Destroy(gameObject);
+            }
             return;
         }
+        Sfx.Play(Sound.HitEnemy, SoundPitch);
         StartCoroutine(Blink());
     }
 

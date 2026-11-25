@@ -97,6 +97,7 @@ public class FlyingEyeEnemy : MonoBehaviour
             windUpStart = transform.position;
             diveTarget = player.transform.position;
             hitThisAttack = false;
+            Sfx.Play(Sound.WindupEye);
         }
         if (stateLabel != null) stateLabel.text = next.ToString();
     }

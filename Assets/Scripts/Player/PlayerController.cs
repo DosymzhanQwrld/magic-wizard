@@ -65,7 +65,10 @@ public class PlayerController : MonoBehaviour
         Vector2 v = rb.linearVelocity;
         v.x = x * stats.moveSpeed;
         if (jumpPressed && IsGrounded())
+        {
             v.y = stats.jumpVelocity;
+            Sfx.Play(Sound.Jump);
+        }
         rb.linearVelocity = v;
     }
 
